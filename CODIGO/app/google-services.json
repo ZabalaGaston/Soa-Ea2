@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "595610126798",
+    "firebase_url": "https://ea2-zabalagaston.firebaseio.com",
+    "project_id": "ea2-zabalagaston",
+    "storage_bucket": "ea2-zabalagaston.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:595610126798:android:703bb923253bab3a53839f",
+        "android_client_info": {
+          "package_name": "com.example.empezandojugarandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "595610126798-oka2jkv9lnjqc1pvbtbi4q5cmqg98p92.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCicmpqD3hIKXGQchcEZVgFDBW8_7Kbrn4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "595610126798-oka2jkv9lnjqc1pvbtbi4q5cmqg98p92.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
