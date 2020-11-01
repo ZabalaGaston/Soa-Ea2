@@ -6,7 +6,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.os.BatteryManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,7 +24,6 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnLogin, btnRegistrar;
     private ProgressBar spinner;
     public IntentFilter filtro;
-    Context context;
 
     private ReceptorOperacion receiver = new ReceptorOperacion();
 
@@ -51,11 +49,18 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ConexionInternet connection = new ConexionInternet();
-
-                if (!connection.checkearInternet(LoginActivity.this)) {
+                Usuario usuario = Usuario.getInstance();
+                if (!connection.checkearInternet(LoginActivity.this))
                     return;
-                }
 
+                String email = txtEmail.getText().toString();
+                String passw = txtPassword.getText().toString();
+
+                usuario.setEmail(email);
+                usuario.setPassword(passw);
+
+                if (!usuario.validarLogin(LoginActivity.this))
+                    return;
                 spinner.setVisibility(View.VISIBLE);
                 JSONObject obj = new JSONObject();
                 try {
@@ -122,7 +127,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     Usuario usuario = Usuario.getInstance();
                     usuario.setToken(datosJson.getString("token"));
-                    usuario.setToken_refresh(datosJson.getString("token_refresh"));
+                    usuario.setTokenRefresh(datosJson.getString("token_refresh"));
                     startActivity(i);
                     finish();
                 } else {

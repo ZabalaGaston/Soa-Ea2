@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 import android.app.Activity;
 
@@ -25,6 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText txtPassword;
     private EditText txtComision;
     private Intent intent;
+    private ProgressBar spinner;
 
     private ReceptorOperacion receiver = new ReceptorOperacion();
     public static Activity register;
@@ -49,6 +51,8 @@ public class RegisterActivity extends AppCompatActivity {
         txtComision = (EditText) findViewById(R.id.idCommission);
 
         context = this;
+        spinner = findViewById(R.id.idProgressBar2);
+        spinner.setVisibility(View.GONE);
 
         configurarBroadcastReciever();
 
@@ -101,6 +105,7 @@ public class RegisterActivity extends AppCompatActivity {
                 if (!usuario.validarFormularioRegistro(RegisterActivity.this))
                     return;
 
+                spinner.setVisibility(View.VISIBLE);
                 Intent i = new Intent(RegisterActivity.this, ServicesHttp_POST.class);
 
                 i.putExtra("uri", Configuracion.URI_REGISTER);
@@ -131,11 +136,12 @@ public class RegisterActivity extends AppCompatActivity {
                 boolean rta;
                 rta = datosJson.getBoolean("success");
 
+                spinner.setVisibility(View.GONE);
                 if (rta) {
 
                     Usuario usuario = Usuario.getInstance();
                     usuario.setToken(datosJson.getString("token"));
-                    usuario.setToken_refresh(datosJson.getString("token_refresh"));
+                    usuario.setTokenRefresh(datosJson.getString("token_refresh"));
 
                     Intent i = new Intent(RegisterActivity.this, MainActivity.class);
                     startActivity(i);

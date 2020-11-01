@@ -7,13 +7,13 @@ public class Usuario {
 
     private static Usuario miUsuario;
     String email;
-    String Password;
+    String password;
     String apellido;
     Integer comision;
     Integer dni;
-    String Nombre;
-    String Token;
-    String Token_refresh;
+    String nombre;
+    String token;
+    String tokenRefresh;
 
 
     public static Usuario getInstance() {
@@ -24,19 +24,19 @@ public class Usuario {
     }
 
     public String getToken() {
-        return Token;
+        return token;
     }
 
     public void setToken(String token) {
-        Token = token;
+        this.token = token;
     }
 
-    public String getToken_refresh() {
-        return Token_refresh;
+    public String getTokenRefresh() {
+        return tokenRefresh;
     }
 
-    public void setToken_refresh(String token_refresh) {
-        Token_refresh = token_refresh;
+    public void setTokenRefresh(String tokenRefresh) {
+        this.tokenRefresh = tokenRefresh;
     }
 
     public String getEmail() {
@@ -48,11 +48,11 @@ public class Usuario {
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
 
     public String getApellido() {
@@ -80,23 +80,37 @@ public class Usuario {
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
     public void setNombre(String nombre) {
-        Nombre = nombre;
+        this.nombre = nombre;
     }
 
 
     boolean validarFormularioRegistro(Context context) {
-        if (this.apellido.isEmpty() || this.Nombre.isEmpty() || this.Password.isEmpty() ||
+        if (this.apellido.isEmpty() || this.nombre.isEmpty() || this.password.isEmpty() ||
                 this.comision.toString().isEmpty() || this.dni.toString().isEmpty() ||
                 this.email.isEmpty()) {
             Toast.makeText(context.getApplicationContext(), "Los campos no deben estar vacíos", Toast.LENGTH_SHORT).show();
             return false;
-        } else if (this.Password.length() < 8) {
-            Toast.makeText(context.getApplicationContext(), "La contraseña debe tener más de 8 caracteres"+ this.Password , Toast.LENGTH_SHORT).show();
+        } else if (this.password.length() < Configuracion.MIN_CARACTER) {
+            Toast.makeText(context.getApplicationContext(), "La contraseña debe tener más de 8 caracteres", Toast.LENGTH_SHORT).show();
 
+            return false;
+        }
+        return true;
+    }
+
+    boolean validarLogin(Context context) {
+        if (this.password.isEmpty() && this.email.isEmpty()) {
+            Toast.makeText(context.getApplicationContext(), "Los campos usuario y contraseña no pueden estar vacíos", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (this.password.isEmpty() && !this.email.isEmpty()) {
+            Toast.makeText(context.getApplicationContext(), "Completar la contraseña", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (!this.password.isEmpty() && this.email.isEmpty()) {
+            Toast.makeText(context.getApplicationContext(), "Completar el mail", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;

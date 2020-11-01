@@ -8,7 +8,6 @@ import android.hardware.SensorEventListener;
 import android.os.Bundle;
 import android.hardware.SensorManager;
 import android.os.StrictMode;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -116,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     private void desloguearse() {
         Usuario usuario = Usuario.getInstance();
-        usuario.setToken_refresh("");
+        usuario.setTokenRefresh("");
         usuario.setToken("");
         usuario.setNombre("");
         usuario.setEmail("");

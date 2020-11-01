@@ -1,8 +1,5 @@
 package com.example.ea2;
 
-import android.annotation.SuppressLint;
-import android.os.AsyncTask;
-import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,7 +24,7 @@ public class RefreshToken2 {
             if(rta) {
                 Usuario usuario = Usuario.getInstance();
                 usuario.setToken(datosJson.getString("token"));
-                usuario.setToken_refresh(datosJson.getString("token_refresh"));
+                usuario.setTokenRefresh(datosJson.getString("token_refresh"));
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -47,7 +44,7 @@ public class RefreshToken2 {
             urlConnection.setConnectTimeout(5000);
             urlConnection.setRequestMethod("PUT");
             urlConnection.setRequestProperty("Content-Type", "application/json");
-            urlConnection.setRequestProperty("Authorization", "Bearer " + usuario.getToken_refresh());
+            urlConnection.setRequestProperty("Authorization", "Bearer " + usuario.getTokenRefresh());
 
             DataOutputStream wr = new DataOutputStream(urlConnection.getOutputStream());
             wr.write(result.toString().getBytes("UTF-8"));
