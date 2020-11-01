@@ -68,14 +68,15 @@
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/buttom_rounded"
         android:text="Iniciar"
+        app:layout_constraintBottom_toTopOf="@+id/idBtnParar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idGravedad" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <Button
         android:id="@+id/idBtnParar"
@@ -84,15 +85,13 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="45dp"
         android:background="@drawable/buttom_rounded_border"
         android:text="Parar"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/idSalir"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idIniciar"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/idIniciar" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -176,11 +175,12 @@
         app:layout_constraintTop_toBottomOf="@+id/idLuminosidad"></LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="204dp"
         android:layout_height="4dp"
-        android:background="@color/colorAccent"
         android:layout_marginStart="104dp"
         android:layout_marginTop="29dp"
+        android:background="@color/colorAccent"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idGravedad"></LinearLayout>
@@ -209,8 +209,10 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="32dp"
-        android:text="Salir"
+        android:layout_marginBottom="45dp"
         android:background="@drawable/buttomexit"
+        android:text="Salir"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idBtnParar" />
